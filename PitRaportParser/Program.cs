@@ -18,7 +18,7 @@ namespace PitRaportParser
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
-
+            //cosie 
             //Window w = new Window();
             //    w.Content = new UserControl1();
             //    w.ShowDialog();
