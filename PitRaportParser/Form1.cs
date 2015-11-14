@@ -113,6 +113,7 @@ namespace PitRaportParser
         {
             Run.Enabled = false;
             Repleace("<p class='KILLED'><span class='pop'>", "<p class='KILLED'><span>", ",", ",</br>", checkBox1.Checked);
+            Repleace("<p class='SURVIVED'><span class='pop'>", "<p class='SURVIVED'><span>", ",", ",</br>", checkBox1.Checked);
             Run.Enabled = true;
         }
         /// <summary>
