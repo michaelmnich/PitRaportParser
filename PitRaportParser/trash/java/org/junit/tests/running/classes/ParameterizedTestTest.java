@@ -1,5 +1,6 @@
 package org.junit.tests.running.classes;
 
+import static java.util.Arrays.asList;
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
@@ -24,7 +25,10 @@ import org.junit.runner.notification.Failure;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameter;
 import org.junit.runners.Parameterized.Parameters;
+import org.junit.runners.Parameterized.UseParametersRunnerFactory;
 import org.junit.runners.model.InitializationError;
+import org.junit.runners.parameterized.ParametersRunnerFactory;
+import org.junit.runners.parameterized.TestWithParameters;
 
 public class ParameterizedTestTest {
     @RunWith(Parameterized.class)
@@ -306,31 +310,10 @@ public class ParameterizedTestTest {
     }
 
     @Test
-    public void meaningfulFailureWhenParametersNotPublic() throws Exception {
-        Result result = JUnitCore.runClasses(ProtectedParametersTest.class);
-        String expected = String.format(
-                "No public static parameters method on class %s",
-                ProtectedParametersTest.class.getName());
-        assertEquals(expected, result.getFailures().get(0).getMessage());
-    }
-
-    @RunWith(Parameterized.class)
-    static public class WrongElementType {
-        @Parameters
-        public static Iterable<String> data() {
-            return Arrays.asList("a", "b", "c");
-        }
-
-        @Test
-        public void aTest() {
-        }
-    }
-
-    @Test
-    public void meaningfulFailureWhenParametersAreNotArrays() {
-        assertThat(
-                testResult(WrongElementType.class).toString(),
-                containsString("WrongElementType.data() must return an Iterable of arrays."));
+    public void meaningfulFailureWhenParametersNotPublic() {
+        assertTestCreatesSingleFailureWithMessage(ProtectedParametersTest.class,
+                "No public static parameters method on class "
+                        + ProtectedParametersTest.class.getName());
     }
 
     @RunWith(Parameterized.class)
@@ -371,5 +354,147 @@ public class ParameterizedTestTest {
     @Test(expected = InitializationError.class)
     public void exceptionWhenPrivateConstructor() throws Throwable {
         new Parameterized(PrivateConstructor.class);
+    }
+
+    @RunWith(Parameterized.class)
+    static public class FibonacciTestWithArray {
+        @Parameters(name= "{index}: fib({0})={1}")
+        public static Object[][] data() {
+            return new Object[][] { { 0, 0 }, { 1, 1 }, { 2, 1 },
+                { 3, 2 }, { 4, 3 }, { 5, 5 }, { 6, 8 } };
+        }
+
+        private final int fInput;
+
+        private final int fExpected;
+
+        public FibonacciTestWithArray(int input, int expected) {
+            fInput= input;
+            fExpected= expected;
+        }
+
+        @Test
+        public void test() {
+            assertEquals(fExpected, fib(fInput));
+        }
+
+        private int fib(int x) {
+            return 0;
+        }
+    }
+
+    @Test
+    public void runsEveryTestOfArray() {
+        Result result= JUnitCore.runClasses(FibonacciTestWithArray.class);
+        assertEquals(7, result.getRunCount());
+    }
+
+    @RunWith(Parameterized.class)
+    static public class SingleArgumentTestWithArray {
+        @Parameters
+        public static Object[] data() {
+            return new Object[] { "first test", "second test" };
+        }
+
+        public SingleArgumentTestWithArray(Object argument) {
+        }
+
+        @Test
+        public void aTest() {
+        }
+    }
+
+    @Test
+    public void runsForEverySingleArgumentOfArray() {
+        Result result= JUnitCore.runClasses(SingleArgumentTestWithArray.class);
+        assertEquals(2, result.getRunCount());
+    }
+
+    @RunWith(Parameterized.class)
+    static public class SingleArgumentTestWithIterable {
+        @Parameters
+        public static Iterable<? extends Object> data() {
+            return asList("first test", "second test");
+        }
+
+        public SingleArgumentTestWithIterable(Object argument) {
+        }
+
+        @Test
+        public void aTest() {
+        }
+  	}
+
+    @Test
+    public void runsForEverySingleArgumentOfIterable() {
+        Result result= JUnitCore
+                .runClasses(SingleArgumentTestWithIterable.class);
+        assertEquals(2, result.getRunCount());
+    }
+
+    static public class ExceptionThrowingRunnerFactory implements
+            ParametersRunnerFactory {
+        public Runner createRunnerForTestWithParameters(TestWithParameters test)
+                throws InitializationError {
+            throw new InitializationError(
+                    "Called ExceptionThrowingRunnerFactory.");
+        }
+    }
+
+    @RunWith(Parameterized.class)
+    @UseParametersRunnerFactory(ExceptionThrowingRunnerFactory.class)
+    static public class TestWithUseParametersRunnerFactoryAnnotation {
+        @Parameters
+        public static Iterable<? extends Object> data() {
+            return asList("single test");
+        }
+
+        public TestWithUseParametersRunnerFactoryAnnotation(Object argument) {
+        }
+
+        @Test
+        public void aTest() {
+        }
+    }
+
+    @Test
+    public void usesParametersRunnerFactoryThatWasSpecifiedByAnnotation() {
+        assertTestCreatesSingleFailureWithMessage(
+                TestWithUseParametersRunnerFactoryAnnotation.class,
+                "Called ExceptionThrowingRunnerFactory.");
+    }
+
+    private void assertTestCreatesSingleFailureWithMessage(Class<?> test, String message) {
+        Result result = JUnitCore.runClasses(test);
+        assertEquals(1, result.getFailures().size());
+        assertEquals(message, result.getFailures().get(0).getMessage());
+    }
+    
+    @RunWith(Parameterized.class)
+    @UseParametersRunnerFactory(ExceptionThrowingRunnerFactory.class)
+    public static abstract class UseParameterizedFactoryAbstractTest {
+        @Parameters
+        public static Iterable<? extends Object> data() {
+            return asList("single test");
+        }
+    }
+    
+    public static class UseParameterizedFactoryTest extends
+            UseParameterizedFactoryAbstractTest {
+
+        public UseParameterizedFactoryTest(String parameter) {
+
+        }
+
+        @Test
+        public void parameterizedTest() {
+        }
+    }
+    
+    @Test
+    public void usesParametersRunnerFactoryThatWasSpecifiedByAnnotationInSuperClass() {
+        assertTestCreatesSingleFailureWithMessage(
+                UseParameterizedFactoryTest.class,
+                "Called ExceptionThrowingRunnerFactory.");
     }
 }

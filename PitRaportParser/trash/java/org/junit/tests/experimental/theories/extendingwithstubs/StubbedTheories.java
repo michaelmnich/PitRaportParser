@@ -40,8 +40,7 @@ public class StubbedTheories extends Theories {
 
         @Override
         protected void runWithIncompleteAssignment(Assignments incomplete)
-                throws InstantiationException, IllegalAccessException,
-                Throwable {
+                throws Throwable {
             GuesserQueue guessers = createGuesserQueue(incomplete);
             queues.add(guessers);
             while (!guessers.isEmpty())
@@ -50,7 +49,7 @@ public class StubbedTheories extends Theories {
         }
 
         private GuesserQueue createGuesserQueue(Assignments incomplete)
-                throws InstantiationException, IllegalAccessException {
+                throws Throwable {
             ParameterSignature nextUnassigned = incomplete.nextUnassigned();
 
             if (nextUnassigned.hasAnnotation(Stub.class)) {
