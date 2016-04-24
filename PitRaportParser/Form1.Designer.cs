@@ -45,6 +45,7 @@
             this.BroweTextBox = new System.Windows.Forms.RichTextBox();
             this.BrowseButton = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.button4 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -56,18 +57,23 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.buttonCompute = new System.Windows.Forms.Button();
             this.Tabs.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            this.tabPage3.SuspendLayout();
             this.SuspendLayout();
             // 
             // Tabs
             // 
+            this.Tabs.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
             this.Tabs.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.Tabs.Controls.Add(this.tabPage1);
             this.Tabs.Controls.Add(this.tabPage2);
+            this.Tabs.Controls.Add(this.tabPage3);
             this.Tabs.Location = new System.Drawing.Point(3, 31);
             this.Tabs.Name = "Tabs";
             this.Tabs.SelectedIndex = 0;
@@ -93,7 +99,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 25);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(875, 463);
+            this.tabPage1.Size = new System.Drawing.Size(1172, 463);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Prepere";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -124,7 +130,7 @@
             this.label10.AutoSize = true;
             this.label10.Location = new System.Drawing.Point(299, 179);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(55, 17);
+            this.label10.Size = new System.Drawing.Size(53, 16);
             this.label10.TabIndex = 11;
             this.label10.Text = "Zamień";
             // 
@@ -133,7 +139,7 @@
             this.label9.AutoSize = true;
             this.label9.Location = new System.Drawing.Point(26, 179);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(51, 17);
+            this.label9.Size = new System.Drawing.Size(48, 16);
             this.label9.TabIndex = 10;
             this.label9.Text = "Znajdź";
             // 
@@ -142,7 +148,7 @@
             this.label8.AutoSize = true;
             this.label8.Location = new System.Drawing.Point(26, 258);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(32, 17);
+            this.label8.Size = new System.Drawing.Size(31, 16);
             this.label8.TabIndex = 9;
             this.label8.Text = "Log";
             // 
@@ -179,7 +185,7 @@
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(26, 97);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(250, 17);
+            this.label7.Size = new System.Drawing.Size(236, 16);
             this.label7.TabIndex = 5;
             this.label7.Text = "Formatuj raporty w wybranym katalogu";
             // 
@@ -188,7 +194,7 @@
             this.checkBox1.AutoSize = true;
             this.checkBox1.Location = new System.Drawing.Point(192, 122);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(205, 21);
+            this.checkBox1.Size = new System.Drawing.Size(193, 20);
             this.checkBox1.TabIndex = 4;
             this.checkBox1.Text = "Usuń zapis o milisekundach";
             this.checkBox1.UseVisualStyleBackColor = true;
@@ -208,7 +214,7 @@
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(26, 27);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(181, 17);
+            this.label6.Size = new System.Drawing.Size(171, 16);
             this.label6.TabIndex = 2;
             this.label6.Text = "Wybież Katalog z raportami";
             // 
@@ -235,6 +241,7 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.button4);
             this.tabPage2.Controls.Add(this.label1);
             this.tabPage2.Controls.Add(this.richTextBox1);
             this.tabPage2.Controls.Add(this.label4);
@@ -253,13 +260,23 @@
             this.tabPage2.Text = "Analise";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(646, 89);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(141, 23);
+            this.button4.TabIndex = 10;
+            this.button4.Text = "Kopjuj Testy";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(18, 30);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(206, 17);
+            this.label1.Size = new System.Drawing.Size(195, 16);
             this.label1.TabIndex = 6;
             this.label1.Text = "Tu wklejać testy do bazy testów";
             // 
@@ -278,7 +295,7 @@
             this.label4.Location = new System.Drawing.Point(863, 225);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(99, 17);
+            this.label4.Size = new System.Drawing.Size(93, 16);
             this.label4.TabIndex = 9;
             this.label4.Text = "Lista ID testów";
             // 
@@ -344,7 +361,7 @@
             this.label2.Location = new System.Drawing.Point(15, 225);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(204, 17);
+            this.label2.Size = new System.Drawing.Size(194, 16);
             this.label2.TabIndex = 7;
             this.label2.Text = "Tu wklejać testy do wyszukania";
             // 
@@ -354,7 +371,7 @@
             this.label3.Location = new System.Drawing.Point(863, 30);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(84, 17);
+            this.label3.Size = new System.Drawing.Size(80, 16);
             this.label3.TabIndex = 8;
             this.label3.Text = "Baza testów";
             // 
@@ -364,9 +381,29 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(915, 542);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(255, 17);
+            this.label5.Size = new System.Drawing.Size(238, 16);
             this.label5.TabIndex = 11;
             this.label5.Text = "© 2015 Piotr Wawrzyniak, Michał Mnich";
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.buttonCompute);
+            this.tabPage3.Location = new System.Drawing.Point(4, 25);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Size = new System.Drawing.Size(1172, 463);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "Statistics";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // buttonCompute
+            // 
+            this.buttonCompute.Location = new System.Drawing.Point(14, 86);
+            this.buttonCompute.Name = "buttonCompute";
+            this.buttonCompute.Size = new System.Drawing.Size(109, 23);
+            this.buttonCompute.TabIndex = 0;
+            this.buttonCompute.Text = "Compute";
+            this.buttonCompute.UseVisualStyleBackColor = true;
+            this.buttonCompute.Click += new System.EventHandler(this.buttonCompute_Click);
             // 
             // Form1
             // 
@@ -384,6 +421,7 @@
             this.tabPage1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
+            this.tabPage3.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -419,6 +457,9 @@
         private System.Windows.Forms.RichTextBox richTextBox7;
         private System.Windows.Forms.RichTextBox richTextBox6;
         private System.Windows.Forms.RichTextBox richTextBox5;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.Button buttonCompute;
     }
 }
 

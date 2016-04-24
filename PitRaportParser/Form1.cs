@@ -192,5 +192,22 @@ namespace PitRaportParser
             Repleace(richTextBox7.Text, richTextBox6.Text, "NILL", "NILL", false);
             button3.Enabled = true;
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            string s = "";
+            for (int i = 0; i < bazaTestow.Count; i++)
+            {
+                s += bazaTestow[i] + "\n";
+            }
+            System.Windows.Forms.Clipboard.SetText(s);
+        }
+
+        private void buttonCompute_Click(object sender, EventArgs e)
+        {
+
+        }
+
+      
     }
 }
