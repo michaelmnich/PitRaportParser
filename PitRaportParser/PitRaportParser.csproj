@@ -123,56 +123,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="trash\java\junit\tests\junit-r4.11\src\test\java\junit\tests\" />
-    <Folder Include="trash\java\junit\tests\junit-r4.11\src\test\java\org\junit\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="trash\java\junit\samples\AllTests.java" />
-    <Content Include="trash\java\junit\samples\ListTest.java" />
-    <Content Include="trash\java\junit\samples\money\IMoney.java" />
-    <Content Include="trash\java\junit\samples\money\Money.java" />
-    <Content Include="trash\java\junit\samples\money\MoneyBag.java" />
-    <Content Include="trash\java\junit\samples\money\MoneyTest.java" />
-    <Content Include="trash\java\junit\samples\money\package-info.java" />
-    <Content Include="trash\java\junit\samples\package-info.java" />
-    <Content Include="trash\java\junit\samples\SimpleTest.java" />
-    <Content Include="trash\java\junit\tests\AllTests.java" />
-    <Content Include="trash\java\junit\tests\extensions\ActiveTestTest.java" />
-    <Content Include="trash\java\junit\tests\extensions\AllTests.java" />
-    <Content Include="trash\java\junit\tests\extensions\ExtensionTest.java" />
-    <Content Include="trash\java\junit\tests\extensions\package-info.java" />
-    <Content Include="trash\java\junit\tests\extensions\RepeatedTestTest.java" />
-    <Content Include="trash\java\junit\tests\framework\AllTests.java" />
-    <Content Include="trash\java\junit\tests\framework\AssertTest.java" />
-    <Content Include="trash\java\junit\tests\framework\ComparisonCompactorTest.java" />
-    <Content Include="trash\java\junit\tests\framework\ComparisonFailureTest.java" />
-    <Content Include="trash\java\junit\tests\framework\DoublePrecisionAssertTest.java" />
-    <Content Include="trash\java\junit\tests\framework\Failure.java" />
-    <Content Include="trash\java\junit\tests\framework\FloatAssertTest.java" />
-    <Content Include="trash\java\junit\tests\framework\InheritedTestCase.java" />
-    <Content Include="trash\java\junit\tests\framework\NoArgTestCaseTest.java" />
-    <Content Include="trash\java\junit\tests\framework\NoTestCaseClass.java" />
-    <Content Include="trash\java\junit\tests\framework\NoTestCases.java" />
-    <Content Include="trash\java\junit\tests\framework\NotPublicTestCase.java" />
-    <Content Include="trash\java\junit\tests\framework\NotVoidTestCase.java" />
-    <Content Include="trash\java\junit\tests\framework\OneTestCase.java" />
-    <Content Include="trash\java\junit\tests\framework\OverrideTestCase.java" />
-    <Content Include="trash\java\junit\tests\framework\package-info.java" />
-    <Content Include="trash\java\junit\tests\framework\Success.java" />
-    <Content Include="trash\java\junit\tests\framework\SuiteTest.java" />
-    <Content Include="trash\java\junit\tests\framework\TestCaseTest.java" />
-    <Content Include="trash\java\junit\tests\framework\TestImplementorTest.java" />
-    <Content Include="trash\java\junit\tests\framework\TestListenerTest.java" />
-    <Content Include="trash\java\junit\tests\framework\ThreeTestCases.java" />
-    <Content Include="trash\java\junit\tests\package-info.java" />
-    <Content Include="trash\java\junit\tests\runner\AllTests.java" />
-    <Content Include="trash\java\junit\tests\runner\BaseTestRunnerTest.java" />
-    <Content Include="trash\java\junit\tests\runner\package-info.java" />
-    <Content Include="trash\java\junit\tests\runner\StackFilterTest.java" />
-    <Content Include="trash\java\junit\tests\runner\TextFeedbackTest.java" />
-    <Content Include="trash\java\junit\tests\runner\TextRunnerSingleMethodTest.java" />
-    <Content Include="trash\java\junit\tests\runner\TextRunnerTest.java" />
-    <Content Include="trash\java\junit\tests\WasRun.java" />
+    <Folder Include="trash\java\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
