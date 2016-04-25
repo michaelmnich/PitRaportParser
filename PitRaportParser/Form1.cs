@@ -9,6 +9,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using PitRaportParser.CalculateLib;
 
 namespace PitRaportParser
 {
@@ -206,6 +207,10 @@ namespace PitRaportParser
         private void buttonCompute_Click(object sender, EventArgs e)
         {
 
+          var seta =  File.ReadAllLines("G:\\Junit reports\\cosie\\setA.txt");
+            var setb = File.ReadAllLines("G:\\Junit reports\\cosie\\setB.txt");
+           var del = Statistic.Deleted(seta, setb);
+            var add = Statistic.Added(seta, setb);
         }
 
       

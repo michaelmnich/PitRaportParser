@@ -24,7 +24,7 @@ namespace PitRaportParser.CalculateLib
                     toReturn.Add(As);
             }
             
-            return null;
+            return toReturn;
         }
 
         public static int Added(IEnumerable<string> setA, IEnumerable<string> setB)
