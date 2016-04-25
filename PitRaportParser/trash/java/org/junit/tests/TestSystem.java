@@ -7,25 +7,20 @@ import java.io.PrintStream;
 import org.junit.internal.JUnitSystem;
 
 public class TestSystem implements JUnitSystem {
-	private PrintStream out;
-	public int fCode;
-	private ByteArrayOutputStream fOutContents;
+    private PrintStream out;
+    private ByteArrayOutputStream fOutContents;
 
-	public TestSystem() {
-		fOutContents= new ByteArrayOutputStream();
-		out= new PrintStream(fOutContents);
-	}
+    public TestSystem() {
+        fOutContents = new ByteArrayOutputStream();
+        out = new PrintStream(fOutContents);
+    }
 
-	public void exit(int code) {
-		fCode= code;
-	}
+    public PrintStream out() {
+        return out;
+    }
 
-	public PrintStream out() {
-		return out;
-	}
-
-	public OutputStream outContents() {
-		return fOutContents;
-	}
+    public OutputStream outContents() {
+        return fOutContents;
+    }
 
 }
